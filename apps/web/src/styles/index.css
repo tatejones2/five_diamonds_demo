@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+@import './tokens.css';
+@import '@fontsource-variable/inter';
+@import '@fontsource/oswald/500.css';
+@import '@fontsource/oswald/600.css';
+@import '@fontsource/oswald/700.css';
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-surface-alt text-ink font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-brand-sky);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .card {
+    @apply rounded-[var(--radius-card)] border border-line bg-surface shadow-[var(--shadow-card)];
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.14em] text-brand-flame;
+  }
+  .prose-fd {
+    @apply max-w-none text-ink-muted leading-relaxed;
+  }
+  .prose-fd h2 { @apply mt-8 mb-3 text-2xl font-semibold uppercase text-ink; }
+  .prose-fd h3 { @apply mt-6 mb-2 text-xl font-semibold uppercase text-ink; }
+  .prose-fd p { @apply my-3; }
+  .prose-fd ul { @apply my-3 list-disc pl-6; }
+  .prose-fd ol { @apply my-3 list-decimal pl-6; }
+  .prose-fd a { @apply font-medium text-brand-navy underline underline-offset-2; }
+  .prose-fd strong { @apply text-ink; }
+  /* Subtle diamond/stitch motif for hero sections */
+  .diamond-grid {
+    background-image:
+      linear-gradient(135deg, rgb(255 255 255 / 0.05) 25%, transparent 25%),
+      linear-gradient(225deg, rgb(255 255 255 / 0.05) 25%, transparent 25%),
+      linear-gradient(315deg, rgb(255 255 255 / 0.05) 25%, transparent 25%),
+      linear-gradient(45deg, rgb(255 255 255 / 0.05) 25%, transparent 25%);
+    background-size: 56px 56px;
+    background-position: 0 0, 28px 0, 28px -28px, 0 28px;
+  }
+}

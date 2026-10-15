@@ -1,0 +1,19 @@
+# Example production-like topology. Use a MANAGED PostgreSQL (with automated backups) in production,
+# not a database container. Secrets come from the host's secret store, never from this file.
+services:
+  api:
+    build: { context: ., target: api }
+    restart: unless-stopped
+    env_file: .env.production   # see .env.example; NODE_ENV=production enforces safe adapters
+    expose: ["4000"]
+  web:
+    build: { context: ., target: web }
+    restart: unless-stopped
+    depends_on: [api]
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+      API_UPSTREAM: api:4000
+    ports: ["80:80", "443:443"]
+    volumes: [caddy_data:/data]
+volumes:
+  caddy_data:

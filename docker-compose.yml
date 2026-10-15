@@ -1,0 +1,20 @@
+# Local development & test database. Not a production topology (see DEPLOYMENT.md).
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: fivediamonds
+      POSTGRES_PASSWORD: fivediamonds_dev_only
+      POSTGRES_DB: fivediamonds
+    ports:
+      - "127.0.0.1:5442:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fivediamonds"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+volumes:
+  pgdata:

@@ -1,0 +1,47 @@
+/*
+ * Design tokens — the ONLY place brand values live (spec §4, DECISIONS B1–B3).
+ *
+ * BRAND COLOURS ARE LEGACY-DERIVED, NOT CONFIRMED OFFICIAL VALUES:
+ *   --brand-navy  #213a83  inline colour on the legacy site
+ *   --brand-sky   #3a92c9  sampled from the legacy logo PNG
+ *   --brand-flame #c93c1f  legacy site CSS, matches logo outline
+ * Replace with owner-supplied values; every component reads these tokens.
+ */
+@theme {
+  --color-brand-navy: #213a83;
+  --color-brand-navy-deep: #13235a;
+  --color-brand-sky: #3a92c9;
+  --color-brand-sky-soft: #e3f1fa;
+  /* Text-safe sky (5.4:1 on white). --color-brand-sky is for fills/decoration only (3.4:1). */
+  --color-brand-sky-ink: #1d6fa5;
+  --color-brand-flame-ink: #a8321a;
+  --color-brand-flame: #c93c1f;
+  --color-brand-flame-soft: #fbe9e4;
+
+  --color-ink: #0f172a;
+  --color-ink-muted: #475569;
+  --color-ink-subtle: #586577;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f6f7f9;
+  --color-surface-sunk: #eef1f5;
+  --color-line: #dde3ea;
+  --color-line-strong: #c3ccd7;
+  --color-chalk: #fbfaf6;
+
+  /* Status text colours meet 4.5:1 on their -soft backgrounds. (always paired with text labels — never colour alone) */
+  --color-ok: #166534;
+  --color-ok-soft: #e7f6ec;
+  --color-warn: #8a5300;
+  --color-warn-soft: #fdf4dc;
+  --color-danger: #b91c1c;
+  --color-danger-soft: #fdecec;
+  --color-info: #1d4ed8;
+  --color-info-soft: #e8efff;
+
+  --font-display: 'Oswald', 'Arial Narrow', system-ui, sans-serif;
+  --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius-card: 14px;
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.06), 0 4px 16px rgb(15 23 42 / 0.05);
+  --shadow-lift: 0 2px 4px rgb(15 23 42 / 0.08), 0 12px 32px rgb(15 23 42 / 0.10);
+}

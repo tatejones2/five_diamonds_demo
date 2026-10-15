@@ -1,0 +1,25 @@
+{
+  "name": "fivediamonds",
+  "private": true,
+  "type": "module",
+  "workspaces": ["packages/*", "apps/*"],
+  "engines": { "node": ">=22.12" },
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev -w @fd/api\" \"npm run dev -w @fd/web\"",
+    "db:up": "docker compose up -d db",
+    "db:down": "docker compose down",
+    "db:generate": "npm run db:generate -w @fd/api",
+    "db:migrate": "npm run db:migrate -w @fd/api",
+    "db:seed": "npm run db:seed -w @fd/api",
+    "db:reset": "npm run db:reset -w @fd/api",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:e2e": "npm run test:e2e -w @fd/web",
+    "build": "npm run build --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "5.9.3",
+    "@types/node": "^22.20.5"
+  }
+}
