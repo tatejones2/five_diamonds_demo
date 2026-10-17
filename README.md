@@ -9,20 +9,16 @@ score entry, notices, CMS). Built to `5_diamonds_website_development_spec_v1.md`
 
 ## Quick start
 
-Requires Node 22+ and Docker.
+Requires Node 22+ and Docker Desktop (running). Step-by-step guide: **[LOCAL_SETUP.md](LOCAL_SETUP.md)**.
 
 ```bash
-npm install
-cp .env.example .env        # set AUTH_SECRET: openssl rand -base64 32
-npm run db:up               # Postgres 16 on localhost:5442 (dev + test databases)
-npm run db:migrate
-npm run db:seed             # RESETS the dev DB and loads DEMO data
-npm run dev                 # http://localhost:5173
+npm start              # installs, creates .env, starts Postgres, migrates, seeds DEMO data (first run), runs the site
+npm start -- --reset   # same, but reloads fresh DEMO data
 ```
 
-DEMO accounts (password `demo-password-2026`, all `@demo.5diamonds.invalid`):
+Opens http://localhost:5173. DEMO accounts (password `demo-password-2026`, all `@demo.5diamonds.invalid`):
 `admin`, `director`, `scorekeeper`, `editor`, `coach1`, `coach2`, `coach3`.
-Dev emails (verification, reset) land in the dev mailbox: `GET /api/dev/mailbox?to=<email>`.
+Dev emails land in the dev mailbox: `GET /api/dev/mailbox?to=<email>`.
 
 ## Tests
 
@@ -44,6 +40,6 @@ npm run build
 
 ## Documents
 
-[IMPLEMENTATION_PLAN](IMPLEMENTATION_PLAN.md) (status) · [DECISIONS](DECISIONS.md) (ADRs + pending owner decisions) ·
+[LOCAL_SETUP](LOCAL_SETUP.md) · [IMPLEMENTATION_PLAN](IMPLEMENTATION_PLAN.md) (status) · [DECISIONS](DECISIONS.md) (ADRs + pending owner decisions) ·
 [ARCHITECTURE](ARCHITECTURE.md) · [DATA_MODEL](DATA_MODEL.md) · [API](API.md) ·
 [CONTENT_INVENTORY](CONTENT_INVENTORY.md) · [DEPLOYMENT](DEPLOYMENT.md) · [ADMIN_GUIDE](ADMIN_GUIDE.md)
